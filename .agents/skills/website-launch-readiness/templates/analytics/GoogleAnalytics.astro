@@ -1,0 +1,100 @@
+---
+// src/components/GoogleAnalytics.astro
+// Production-grade Google Analytics 4 (GA4) Integration with Conversion Tracking
+export interface Props {
+  measurementId: string;
+  trackConversions?: boolean;
+  debugMode?: boolean;
+}
+
+const {
+  measurementId,
+  trackConversions = true,
+  debugMode = false,
+} = Astro.props;
+
+if (!measurementId) {
+  console.warn('[GoogleAnalytics] Warning: No measurementId provided. GA4 tracking is disabled.');
+}
+---
+
+{measurementId && (
+  <>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      type="text/javascript"
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+    ></script>
+    <script
+      is:inline
+      define:vars={{ measurementId, trackConversions, debugMode }}
+    >
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+
+      gtag('js', new Date());
+      gtag('config', measurementId, {
+        page_path: window.location.pathname,
+        debug_mode: debugMode,
+      });
+
+      // Conversion & Engagement Listeners
+      if (trackConversions) {
+        function setupConversionListeners() {
+          // 1. Track Click-to-Call (Phone number clicks)
+          document.querySelectorAll('a[href^="tel:"]').forEach(function (telLink) {
+            if (telLink.dataset.gaTracked) return;
+            telLink.dataset.gaTracked = 'true';
+            telLink.addEventListener('click', function () {
+              const phoneNumber = telLink.getAttribute('href').replace('tel:', '');
+              gtag('event', 'click_to_call', {
+                phone_number: phoneNumber,
+                link_text: telLink.textContent.trim(),
+                page_location: window.location.href,
+              });
+            });
+          });
+
+          // 2. Track Email Links (mailto: clicks)
+          document.querySelectorAll('a[href^="mailto:"]').forEach(function (mailLink) {
+            if (mailLink.dataset.gaTracked) return;
+            mailLink.dataset.gaTracked = 'true';
+            mailLink.addEventListener('click', function () {
+              const email = mailLink.getAttribute('href').replace('mailto:', '');
+              gtag('event', 'click_to_email', {
+                email_address: email,
+                page_location: window.location.href,
+              });
+            });
+          });
+
+          // 3. Track Form Submissions (Lead Generation)
+          document.querySelectorAll('form').forEach(function (form) {
+            if (form.dataset.gaTracked) return;
+            form.dataset.gaTracked = 'true';
+            form.addEventListener('submit', function () {
+              const formId = form.id || form.getAttribute('name') || 'general_form';
+              gtag('event', 'generate_lead', {
+                form_id: formId,
+                page_location: window.location.href,
+              });
+            });
+          });
+        }
+
+        document.addEventListener('DOMContentLoaded', setupConversionListeners);
+        document.addEventListener('astro:page-load', function () {
+          // Fire page_view on Astro ViewTransitions navigation
+          gtag('config', measurementId, {
+            page_path: window.location.pathname,
+          });
+          setupConversionListeners();
+        });
+      }
+    </script>
+  </>
+)}

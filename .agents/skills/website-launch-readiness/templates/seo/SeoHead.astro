@@ -9,6 +9,8 @@ export interface Props {
   author?: string;
   schema?: Record<string, any> | Array<Record<string, any>>;
   themeColor?: string;
+  gaMeasurementId?: string;
+  googleSiteVerification?: string;
 }
 
 const {
@@ -21,6 +23,8 @@ const {
   author = 'Team',
   schema,
   themeColor = '#4f46e5',
+  gaMeasurementId,
+  googleSiteVerification,
 } = Astro.props;
 
 const resolvedImage = new URL(image, Astro.url).href;
@@ -36,6 +40,9 @@ const resolvedImage = new URL(image, Astro.url).href;
 <meta name="theme-color" content={themeColor} />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href={canonicalURL} />
+{googleSiteVerification && (
+  <meta name="google-site-verification" content={googleSiteVerification} />
+)}
 
 <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
 <meta property="og:type" content={type} />
@@ -59,4 +66,23 @@ const resolvedImage = new URL(image, Astro.url).href;
 <!-- Optional Structured Data (JSON-LD) -->
 {schema && (
   <script type="application/ld+json" set:html={JSON.stringify(schema, null, 2)} />
+)}
+
+<!-- Optional Google Analytics (GA4) -->
+{gaMeasurementId && (
+  <>
+    <script
+      type="text/javascript"
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+    ></script>
+    <script is:inline define:vars={{ gaMeasurementId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', gaMeasurementId);
+    </script>
+  </>
 )}

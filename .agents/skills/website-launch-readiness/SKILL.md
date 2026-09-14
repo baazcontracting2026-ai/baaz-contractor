@@ -5,15 +5,16 @@ description: >-
   On-Page SEO with AI (meta tags, OpenGraph, JSON-LD schemas, sitemap, robots.txt),
   adding accessible FAQ sections with FAQPage schema, building required legal and core pages
   (Privacy Policy, Terms of Service, About Us, Contact Us), Git commits & version control in VS Code,
-  and creating custom branded 404 and 500 error pages. Use this skill whenever preparing a website
-  for production or auditing a client site before launch.
+  creating custom branded 404 and 500 error pages, and mapping the site to Google Analytics (GA4) &
+  Google Search Console using an active Chrome profile and Gmail ID. Use this skill whenever preparing
+  a website for production or auditing a client site before launch.
 ---
 
 # Website Launch Readiness Skill
 
-This skill provides a battle-tested, repeatable 5-step workflow to take any web project (Astro, Next.js, Vite, or standalone HTML/CSS/JS) from a raw development build to a production-ready, search-engine-optimized, legally compliant, and version-controlled website.
+This skill provides a battle-tested, repeatable 6-step workflow to take any web project (Astro, Next.js, Vite, or standalone HTML/CSS/JS) from a raw development build to a production-ready, search-engine-optimized, legally compliant, analytics-tracked, and version-controlled website.
 
-## Overview of the 5 Launch Pillars
+## Overview of the 6 Launch Pillars
 
 | Phase | Milestone | Focus Areas | Key Output / Artifact |
 | :--- | :--- | :--- | :--- |
@@ -22,6 +23,7 @@ This skill provides a battle-tested, repeatable 5-step workflow to take any web 
 | **3** | **Required & Legal Pages** | Legal compliance (GDPR/CCPA), business trust signals, contact accessibility | `/privacy-policy`, `/terms`, `/about`, `/contact` |
 | **4** | **Git Commits & Version Control** | Safe `.gitignore`, atomic commits, conventional commit syntax, VS Code GUI & CLI | Clean Git history, remote push to GitHub/GitLab |
 | **5** | **Adding Error Pages (404, 500)** | Custom branded error pages, navigation recovery, proper HTTP response codes | `/404` (Page Not Found), `/500` (Server Error), hosting redirect config |
+| **6** | **Google Analytics & Search Console** | Active Chrome Gmail mapping, GA4 Measurement ID (`G-XXXXXXXXXX`), GSC verification, conversion tracking | `GoogleAnalytics` component / snippet, `click_to_call` & lead events, GSC paired |
 
 ---
 
@@ -131,6 +133,31 @@ Follow the full guide in [references/05-error-pages-404-500.md](./references/05-
 
 ---
 
+### Phase 6: Google Analytics (GA4) & Search Console Mapping
+
+Follow the full guide in [references/06-google-analytics-mapping.md](./references/06-google-analytics-mapping.md).
+
+1. **Profile Mapping via Active Chrome Session**:
+   - Verify that your Chrome browser is signed in with the Gmail ID provided in the prompt.
+   - Open [analytics.google.com](https://analytics.google.com/) and confirm or switch to the matching profile.
+   - Create or locate the GA4 Property and Web Data Stream for the client's production domain.
+   - Copy the **Measurement ID**: `G-XXXXXXXXXX`.
+2. **Inject Analytics Component & Conversion Listeners**:
+   - Astro: Add [templates/analytics/GoogleAnalytics.astro](./templates/analytics/GoogleAnalytics.astro) to `Layout.astro` or set `gaMeasurementId` in `SeoHead.astro`.
+   - HTML: Inject [templates/analytics/google-analytics.html](./templates/analytics/google-analytics.html) before `</head>`.
+   - Verify automated tracking for high-value actions:
+     - `click_to_call` on `tel:` link clicks.
+     - `click_to_email` on `mailto:` link clicks.
+     - `generate_lead` on form submissions.
+3. **Google Search Console (GSC) Pairing**:
+   - Open [search.google.com/search-console](https://search.google.com/search-console).
+   - Add the website URL prefix and verify ownership instantly via the linked GA4 property or meta tag.
+   - Submit the XML sitemap (`/sitemap.xml`).
+4. **Realtime Verification**:
+   - Visit the site in Chrome and check the **Realtime** report in Google Analytics to confirm active users and `page_view` events are registering live.
+
+---
+
 ## Pre-Launch Verification Checklist
 
 Before delivering the site to a client or pushing to live production, check each box:
@@ -143,5 +170,7 @@ Before delivering the site to a client or pushing to live production, check each
 - [ ] Privacy Policy and Terms have real business information (no placeholder `[COMPANY_NAME]` text).
 - [ ] Contact details (phone, email, address, working contact form) are tested and verified.
 - [ ] Navigating to `/non-existent-page-url` displays the branded 404 page with working home links.
+- [ ] GA4 Measurement ID (`G-XXXXXXXXXX`) is injected, and Realtime dashboard confirms live traffic.
+- [ ] Google Search Console property is added and sitemap submitted.
 - [ ] Working tree is clean: all changes committed with descriptive conventional commit messages.
 - [ ] `.env` and sensitive credentials are NOT tracked in git.

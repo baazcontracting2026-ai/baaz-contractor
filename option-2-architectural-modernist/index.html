@@ -47,6 +47,52 @@
     }
   }
   </script>
+
+  <!-- Google Analytics 4 (GA4) with Automated Conversion Tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK14XL6HM9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+
+    gtag('js', new Date());
+    gtag('config', 'G-JK14XL6HM9', {
+      page_path: window.location.pathname
+    });
+
+    // Automated conversion tracking
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1. Phone clicks
+      document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+        el.addEventListener('click', function() {
+          gtag('event', 'click_to_call', {
+            phone_number: el.getAttribute('href').replace('tel:', ''),
+            page_location: window.location.href
+          });
+        });
+      });
+
+      // 2. Email inquiries
+      document.querySelectorAll('a[href^="mailto:"]').forEach(function(el) {
+        el.addEventListener('click', function() {
+          gtag('event', 'click_to_email', {
+            email_address: el.getAttribute('href').replace('mailto:', ''),
+            page_location: window.location.href
+          });
+        });
+      });
+
+      // 3. Form submissions
+      document.querySelectorAll('form').forEach(function(form) {
+        form.addEventListener('submit', function() {
+          gtag('event', 'generate_lead', {
+            form_id: form.id || 'consultation_form',
+            page_location: window.location.href
+          });
+        });
+      });
+    });
+  </script>
 </head>
 <body>
 
