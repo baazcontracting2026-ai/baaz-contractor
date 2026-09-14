@@ -897,7 +897,8 @@ input[type="range"] {
   border: 1px solid var(--hairline);
   box-shadow: var(--shadow-float);
   position: relative;
-  height: 520px;
+  aspect-ratio: 16 / 7;
+  width: 100%;
   user-select: none;
 }
 
@@ -1273,7 +1274,7 @@ textarea.form-input {
     gap: 1rem;
   }
   .slider-container {
-    height: 360px;
+    aspect-ratio: 4 / 3;
   }
   .footer-grid {
     grid-template-columns: 1fr;
