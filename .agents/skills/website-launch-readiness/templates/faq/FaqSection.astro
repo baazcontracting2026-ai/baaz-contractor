@@ -1,0 +1,114 @@
+---
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  faqs: FaqItem[];
+  id?: string;
+}
+
+const {
+  title = "Frequently Asked Questions",
+  subtitle = "Have questions? We're here to help. Find answers to common questions below.",
+  faqs,
+  id = "faq",
+} = Astro.props;
+
+// Construct FAQPage JSON-LD Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer,
+    },
+  })),
+};
+---
+
+<section id={id} class="py-16 md:py-24 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+        {title}
+      </h2>
+      {subtitle && (
+        <p class="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          {subtitle}
+        </p>
+      )}
+    </div>
+
+    <div class="space-y-4" id="faq-accordion-container">
+      {faqs.map((faq, index) => (
+        <div class="faq-item border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-800/80 shadow-sm overflow-hidden transition-all duration-200 hover:border-slate-300 dark:hover:border-slate-700">
+          <button
+            type="button"
+            class="faq-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4 font-semibold text-lg text-slate-900 dark:text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+            aria-expanded="false"
+            aria-controls={`faq-answer-${index}`}
+            id={`faq-question-${index}`}
+          >
+            <span>{faq.question}</span>
+            <svg
+              class="faq-icon w-5 h-5 flex-shrink-0 text-slate-500 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div
+            id={`faq-answer-${index}`}
+            role="region"
+            aria-labelledby={`faq-question-${index}`}
+            class="faq-content hidden px-6 pb-5 pt-1 text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-700/50"
+          >
+            <p>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Injected Google FAQPage Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</section>
+
+<script>
+  function setupFaqAccordions() {
+    const triggers = document.querySelectorAll('.faq-trigger');
+    
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        const content = trigger.nextElementSibling;
+        const icon = trigger.querySelector('.faq-icon');
+
+        // Toggle state
+        if (isExpanded) {
+          trigger.setAttribute('aria-expanded', 'false');
+          content?.classList.add('hidden');
+          icon?.classList.remove('rotate-180');
+        } else {
+          trigger.setAttribute('aria-expanded', 'true');
+          content?.classList.remove('hidden');
+          icon?.classList.add('rotate-180');
+        }
+      });
+    });
+  }
+
+  // Run on initial load and on Astro page transitions
+  document.addEventListener('DOMContentLoaded', setupFaqAccordions);
+  document.addEventListener('astro:page-load', setupFaqAccordions);
+</script>

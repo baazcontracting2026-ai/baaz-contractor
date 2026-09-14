@@ -1,0 +1,129 @@
+---
+// src/pages/privacy-policy.astro
+// Production-ready Privacy Policy Template
+
+interface Props {
+  companyName?: string;
+  websiteUrl?: string;
+  contactEmail?: string;
+  lastUpdated?: string;
+}
+
+const {
+  companyName = "Our Company",
+  websiteUrl = "https://example.com",
+  contactEmail = "privacy@example.com",
+  lastUpdated = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | {companyName}</title>
+  <meta name="description" content={`Privacy Policy and data protection terms for ${companyName}. Learn how we collect, use, and safeguard your personal information.`} />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 antialiased font-sans">
+
+  <!-- Header -->
+  <header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-10">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="font-bold text-xl text-slate-900 dark:text-white">&larr; Back to {companyName}</a>
+      <a href="/contact" class="text-sm text-indigo-600 dark:text-indigo-400 hover:underline">Contact Legal Team</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-6 py-12 md:py-16">
+    <div class="mb-10 pb-8 border-b border-slate-200 dark:border-slate-800">
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
+        Privacy Policy
+      </h1>
+      <p class="text-slate-500 dark:text-slate-400 text-sm">
+        Effective Date & Last Updated: <span class="font-semibold text-slate-700 dark:text-slate-300">{lastUpdated}</span>
+      </p>
+    </div>
+
+    <article class="prose dark:prose-invert max-w-none space-y-8 leading-relaxed text-slate-700 dark:text-slate-300">
+      <p>
+        At <strong>{companyName}</strong> ("we," "our," or "us"), we are deeply committed to respecting and protecting your privacy. This Privacy Policy outlines how we collect, use, process, and disclose your information when you access or use <strong>{websiteUrl}</strong> (the "Site") and our associated services.
+      </p>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">1. Information We Collect</h2>
+        <p class="mb-2">We collect information that identifies, relates to, describes, or is reasonably capable of being associated with you:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Personal Contact Information:</strong> Name, email address, phone number, and physical billing or mailing address provided via forms or class bookings.</li>
+          <li><strong>Booking & Payment Data:</strong> Transaction histories and payment verification details (processed securely through PCI-compliant third-party providers such as Stripe; we do not store raw card numbers).</li>
+          <li><strong>Device & Usage Data:</strong> IP address, browser type, operating system, pages visited, and referring URLs collected automatically via cookies.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">2. How We Use Your Information</h2>
+        <p class="mb-2">We utilize collected data solely for legitimate business operations:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>To fulfill scheduled service bookings, dance workshops, or training appointments.</li>
+          <li>To communicate booking confirmations, customer support responses, and scheduling updates.</li>
+          <li>To maintain website performance, prevent fraud, and ensure compliance with applicable regulations.</li>
+          <li>To send promotional communications (you may opt out at any time via the unsubscribe link).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">3. Cookies & Tracking Technologies</h2>
+        <p>
+          We employ cookies and tracking pixels to analyze traffic patterns, remember user preferences, and personalize your experience. You may configure your web browser to decline cookies, though certain interactive features on our site may become limited.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">4. Information Sharing & Third Parties</h2>
+        <p>
+          <strong>We never sell, rent, or trade your personal data to third parties.</strong> We only share information with trusted third-party service providers who assist us in operating our site (e.g., hosting providers, email dispatchers, payment processors) under strict confidentiality agreements.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">5. Data Retention & Security</h2>
+        <p>
+          We implement industry-standard administrative, technical, and physical safeguards (including SSL/TLS encryption) to protect your personal data from unauthorized access, alteration, or destruction. We retain your information only as long as necessary to fulfill the purposes outlined in this policy.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">6. Your Privacy Rights</h2>
+        <p class="mb-2">Depending on your jurisdiction (such as GDPR in Europe or CCPA/CPRA in California), you possess the right to:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Request access to the personal data we hold about you.</li>
+          <li>Request correction or deletion of your personal records.</li>
+          <li>Opt out of marketing communications or object to data processing.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">7. Contact Information</h2>
+        <p>
+          If you have questions, feedback, or wish to exercise any privacy rights, please contact our data team at:
+        </p>
+        <div class="mt-4 p-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+          <p class="font-semibold">{companyName}</p>
+          <p>Email: <a href={`mailto:${contactEmail}`} class="text-indigo-600 dark:text-indigo-400 underline">{contactEmail}</a></p>
+          <p>Website: <a href={websiteUrl} class="text-indigo-600 dark:text-indigo-400 underline">{websiteUrl}</a></p>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-xs text-slate-500">
+    <p>&copy; {new Date().getFullYear()} {companyName}. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

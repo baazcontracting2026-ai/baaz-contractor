@@ -1,0 +1,110 @@
+---
+// src/pages/terms.astro
+// Production-ready Terms & Conditions Template
+
+interface Props {
+  companyName?: string;
+  websiteUrl?: string;
+  contactEmail?: string;
+  jurisdiction?: string;
+  lastUpdated?: string;
+}
+
+const {
+  companyName = "Our Company",
+  websiteUrl = "https://example.com",
+  contactEmail = "support@example.com",
+  jurisdiction = "State of New Jersey, United States",
+  lastUpdated = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions | {companyName}</title>
+  <meta name="description" content={`Terms and Conditions of service for ${companyName}. Please read carefully before booking classes or using our site.`} />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 antialiased font-sans">
+
+  <header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-10">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="font-bold text-xl text-slate-900 dark:text-white">&larr; Back to {companyName}</a>
+      <a href="/contact" class="text-sm text-indigo-600 dark:text-indigo-400 hover:underline">Support</a>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 py-12 md:py-16">
+    <div class="mb-10 pb-8 border-b border-slate-200 dark:border-slate-800">
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
+        Terms and Conditions
+      </h1>
+      <p class="text-slate-500 dark:text-slate-400 text-sm">
+        Effective Date & Last Updated: <span class="font-semibold text-slate-700 dark:text-slate-300">{lastUpdated}</span>
+      </p>
+    </div>
+
+    <article class="prose dark:prose-invert max-w-none space-y-8 leading-relaxed text-slate-700 dark:text-slate-300">
+      <p>
+        Welcome to <strong>{companyName}</strong>. By accessing or browsing our website (<strong>{websiteUrl}</strong>) or booking any of our programs, classes, or services, you agree to comply with and be bound by the following Terms and Conditions.
+      </p>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">1. Use of Website & Intellectual Property</h2>
+        <p>
+          All content displayed on this website, including but not limited to choreography videos, photography, graphics, logos, text descriptions, and site design, is the exclusive intellectual property of <strong>{companyName}</strong> and protected under copyright laws. You may not reproduce, distribute, or modify any materials without prior written consent.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">2. Service Bookings, Payments, & Cancellations</h2>
+        <p>
+          All class registrations, private sessions, and workshop fees must be paid in full prior to participation. If you must reschedule or cancel, you must notify us at least 48 hours prior to your scheduled session. Refunds are subject to our standard satisfaction guarantee policies.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">3. Physical Activity & Liability Disclaimer</h2>
+        <p>
+          Participation in dance classes, physical training, and workshops involves physical exertion. By enrolling, you acknowledge that you are physically capable of participating, assume all voluntary risks associated with physical activity, and release <strong>{companyName}</strong>, its instructors, and facilities from any liability for personal injuries or property loss.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">4. Disclaimer of Warranties</h2>
+        <p>
+          Our website and online materials are provided on an "as is" and "as available" basis without warranties of any kind, whether express or implied. We do not warrant that our digital services will operate uninterrupted or error-free.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">5. Governing Law & Dispute Resolution</h2>
+        <p>
+          These Terms are governed by and construed in accordance with the laws of <strong>{jurisdiction}</strong>, without regard to its conflict of law provisions. Any legal action or proceeding relating to your access to or use of the site or services shall be instituted in the state or federal courts located in {jurisdiction}.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">6. Inquiries</h2>
+        <p>
+          Questions about these Terms should be directed to our administration team at:
+        </p>
+        <div class="mt-4 p-4 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+          <p class="font-semibold">{companyName}</p>
+          <p>Email: <a href={`mailto:${contactEmail}`} class="text-indigo-600 dark:text-indigo-400 underline">{contactEmail}</a></p>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-xs text-slate-500">
+    <p>&copy; {new Date().getFullYear()} {companyName}. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

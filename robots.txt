@@ -1,0 +1,6 @@
+# Robots.txt for Baaz Contracting Showcase
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://baazcontracting.com/sitemap.xml

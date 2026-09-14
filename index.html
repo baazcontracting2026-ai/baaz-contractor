@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baaz Contracting | Dual Website Architecture Showcase</title>
+  <meta name="description" content="Explore dual architectural website designs for Baaz Contracting: Option 1 Vercel Developer Dark/Light theme and Option 2 Nordic Modernist theme.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://baazcontracting.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://baazcontracting.com/">
+  <meta property="og:title" content="Baaz Contracting | Dual Website Architecture Showcase">
+  <meta property="og:description" content="Explore dual architectural website designs for Baaz Contracting: Built on Trust. Driven by Precision.">
+  <meta property="og:image" content="https://baazcontracting.com/shared-assets/hero-home.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Baaz Contracting | Dual Website Architecture Showcase">
+  <meta name="twitter:description" content="Explore dual architectural website designs for Baaz Contracting: Built on Trust. Driven by Precision.">
+  <meta name="twitter:image" content="https://baazcontracting.com/shared-assets/hero-home.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="shared-assets/favicon.png" type="image/png">
+  <style>
+    :root {
+      --bg: #09090B;
+      --card-bg: #141418;
+      --card-border: #27272A;
+      --cyan: #00DFD8;
+      --blue: #0070F3;
+      --emerald: #10B981;
+      --text-main: #F4F4F5;
+      --text-muted: #A1A1AA;
+      --font-main: 'Inter', system-ui, sans-serif;
+      --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      padding-bottom: 5rem;
+      background-image: 
+        radial-gradient(rgba(0, 223, 216, 0.05) 1px, transparent 1px),
+        radial-gradient(rgba(0, 112, 243, 0.05) 1px, transparent 1px);
+      background-size: 36px 36px, 72px 72px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      background: rgba(14, 14, 18, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 1.15rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .top-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .brand-logo-img {
+      height: 48px;
+      width: auto;
+      max-width: 190px;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+
+    .brand-group:hover .brand-logo-img {
+      transform: scale(1.02);
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--cyan);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .badge-pill {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(0, 223, 216, 0.12);
+      border: 1px solid rgba(0, 223, 216, 0.3);
+      color: var(--cyan);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+    }
+
+    /* Hero Header */
+    .hub-hero {
+      padding: 4.5rem 0 3.5rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hub-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #FFFFFF 20%, #A1A1AA 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hub-hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* Distinct Aesthetic Notice */
+    .aesthetic-notice {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      max-width: 840px;
+      margin: 0 auto 3.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-align: left;
+      font-size: 0.92rem;
+      color: #D1FAE5;
+    }
+
+    .aesthetic-notice svg {
+      color: var(--emerald);
+      flex-shrink: 0;
+    }
+
+    /* Dual Cards Grid */
+    .dual-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .option-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .option-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    .card-preview-media {
+      height: 260px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-preview-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .option-card:hover .card-preview-media img {
+      transform: scale(1.05);
+    }
+
+    .card-top-tag {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.4rem 0.9rem;
+      border-radius: 9999px;
+      letter-spacing: 0.05em;
+    }
+
+    .tag-option-1 {
+      background: rgba(0, 112, 243, 0.9);
+      color: #FFFFFF;
+      box-shadow: 0 4px 15px rgba(0, 112, 243, 0.4);
+    }
+
+    .tag-option-2 {
+      background: rgba(13, 92, 70, 0.95);
+      color: #A7F3D0;
+      border: 1px solid rgba(167, 243, 208, 0.3);
+      box-shadow: 0 4px 15px rgba(13, 92, 70, 0.4);
+    }
+
+    .card-content {
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      margin-bottom: 0.65rem;
+      color: #FFFFFF;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.75rem;
+      line-height: 1.6;
+    }
+
+    .specs-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+
+    .specs-list li {
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      color: #D4D4D8;
+    }
+
+    .specs-list li svg {
+      flex-shrink: 0;
+    }
+
+    .icon-opt1 { color: var(--cyan); }
+    .icon-opt2 { color: var(--emerald); }
+
+    .card-actions {
+      display: flex;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .btn-launch {
+      flex: 1;
+      padding: 0.9rem 1.25rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-opt1 {
+      background: linear-gradient(135deg, #0070F3, #00DFD8);
+      color: #09090B;
+    }
+
+    .btn-opt1:hover {
+      box-shadow: 0 0 25px rgba(0, 223, 216, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-opt2 {
+      background: linear-gradient(135deg, #0D5C46, #10B981);
+      color: #FFFFFF;
+    }
+
+    .btn-opt2:hover {
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Comparison Table */
+    .comparison-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .comparison-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+
+    .comparison-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comp-table th, .comp-table td {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+      font-size: 0.92rem;
+    }
+
+    .comp-table th {
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .comp-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .code-pill {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      background: #1C1C22;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #2E2E36;
+      color: var(--cyan);
+    }
+
+    @media (max-width: 900px) {
+      .dual-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .comparison-section {
+        padding: 2rem 1.25rem;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-bar">
+    <div class="container top-flex">
+      <div class="brand-group">
+        <img src="shared-assets/logo-light.svg" alt="Baaz Contracting - Built on Trust. Driven by Precision." class="brand-logo-img">
+      </div>
+      <div>
+        <span class="badge-pill">&bull; Ready for Client Review</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hub Hero -->
+    <section class="hub-hero">
+      <h1>Two Distinct Architectural Websites for Baaz Contracting</h1>
+      <p>
+        Built exclusively using the generic service capabilities, commitment pillars, and official brand signature &mdash; <em>Built on Trust. Driven by Precision.</em> Each website provides a bespoke look, layout, and technical architecture tailored for Baaz Contracting.
+      </p>
+
+      <div class="aesthetic-notice">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <polyline points="9 12 11 14 15 10"></polyline>
+        </svg>
+        <div>
+          <strong>Guaranteed Aesthetic Distinction:</strong> Neither website uses the dark navy & gold palette or styling of Sree Pada Construction. Both present brand-new modern architectural palettes crafted specifically for Baaz Contracting.
+        </div>
+      </div>
+    </section>
+
+    <!-- Dual Website Cards -->
+    <div class="dual-cards-grid">
+      
+      <!-- Card 1: Option 1 (With MD Files) -->
+      <div class="option-card">
+        <div class="card-preview-media">
+          <img src="shared-assets/hero-home.jpg" alt="Option 1 Vercel Tailwind Architectural">
+          <span class="card-top-tag tag-option-1">OPTION 1 &bull; WITH ALL MD FILES</span>
+        </div>
+        <div class="card-content">
+          <h3>Vercel & Tailwind High-Tech Edition</h3>
+          <p class="card-desc">
+            Inspired by SUGO's Vercel Design Language. Ultra-crisp architectural canvas, dark/light mode toggle, and complete markdown system specifications.
+          </p>
+
+          <ul class="specs-list">
+            <li>
+              <svg class="icon-opt1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Design MD Files:</strong> VERCEL_DESIGN.md, TAILWIND_CONFIG.md, ASTRO_GUIDE.md, DESIGN_SYSTEM.md</span>
+            </li>
+            <li>
+              <svg class="icon-opt1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Aesthetic:</strong> Stark white / obsidian dark mode, micro-hairlines, electric cyan & azure mesh gradients</span>
+            </li>
+            <li>
+              <svg class="icon-opt1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Interactive Features:</strong> Live Cost Estimator, Before/After Slider, Consultation Edge Modal</span>
+            </li>
+            <li>
+              <svg class="icon-opt1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Typography:</strong> Inter & Plus Jakarta Sans with JetBrains Mono badges</span>
+            </li>
+          </ul>
+
+          <div class="card-actions">
+            <a href="option-1-vercel-tailwind-astro/index.html" class="btn-launch btn-opt1" target="_blank">
+              <span>Launch Option 1 Live</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Option 2 (Without MD Files) -->
+      <div class="option-card">
+        <div class="card-preview-media">
+          <img src="shared-assets/kitchen-remodel.jpg" alt="Option 2 Nordic Architectural Edition">
+          <span class="card-top-tag tag-option-2">OPTION 2 &bull; ZERO MD FILES</span>
+        </div>
+        <div class="card-content">
+          <h3>Contemporary Nordic & Emerald Edition</h3>
+          <p class="card-desc">
+            A distinct architectural editorial layout. Clean standalone build without external markdown design documentation, featuring warm organic materials.
+          </p>
+
+          <ul class="specs-list">
+            <li>
+              <svg class="icon-opt2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>File Architecture:</strong> Streamlined, standalone HTML/CSS/JS (no extra MD files)</span>
+            </li>
+            <li>
+              <svg class="icon-opt2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Aesthetic:</strong> Warm Sandstone linen canvas, Charcoal inks, Alpine Emerald accents</span>
+            </li>
+            <li>
+              <svg class="icon-opt2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Interactive Features:</strong> 5-Stage "Foundation to Finish" Timeline, 7-Trade Categorized Filter</span>
+            </li>
+            <li>
+              <svg class="icon-opt2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>Typography:</strong> DM Sans & Plus Jakarta Sans with Space Grotesk badges</span>
+            </li>
+          </ul>
+
+          <div class="card-actions">
+            <a href="option-2-architectural-modernist/index.html" class="btn-launch btn-opt2" target="_blank">
+              <span>Launch Option 2 Live</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Comparative Feature Matrix -->
+    <section class="comparison-section">
+      <h3>Architectural & Feature Comparison</h3>
+      <p class="comparison-subtitle">Summary of design tokens, interactivity, and documentation across both options</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Option 1: Vercel & Tailwind Tech</th>
+            <th>Option 2: Contemporary Nordic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Markdown Design Docs</strong></td>
+            <td><span class="code-pill">Included (4 comprehensive MD files)</span></td>
+            <td><span class="code-pill" style="color: #A1A1AA; border-color: #3F3F46;">None (Self-contained website)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Color Harmony</strong></td>
+            <td>Stark White / Obsidian Canvas, Hairline Borders, Cyan & Azure Neon</td>
+            <td>Warm Sandstone, Soft Clay, Deep Charcoal, Alpine Emerald</td>
+          </tr>
+          <tr>
+            <td><strong>Interactive Tools</strong></td>
+            <td>Live Cost & Sqft Calculator, Drag Before/After Renovation Slider</td>
+            <td>5-Stage Foundation-to-Finish Timeline, 3-Category Trade Filters</td>
+          </tr>
+          <tr>
+            <td><strong>Lead Intake Flow</strong></td>
+            <td>Floating Edge Modal with Dynamic Prefill from Calculator</td>
+            <td>Inline Luxury Intake Card with Trade Selector</td>
+          </tr>
+          <tr>
+            <td><strong>Dark / Light Mode</strong></td>
+            <td>Yes (Interactive toggle with local storage memory)</td>
+            <td>Nordic Organic Neutral (Warm daytime high-contrast)</td>
+          </tr>
+          <tr>
+            <td><strong>Core Content Used</strong></td>
+            <td>All 7 Services, 7 Why-Us Hallmarks, 4 Commitment Pillars</td>
+            <td>All 7 Services, 7 Why-Us Hallmarks, 4 Commitment Pillars</td>
+          </tr>
+          <tr>
+            <td><strong>Sree Pada Similarity</strong></td>
+            <td><strong>0%</strong> (No dark navy or gold)</td>
+            <td><strong>0%</strong> (No dark navy or gold)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <footer style="border-top: 1px solid var(--card-border); padding: 2.5rem 0; margin-top: 4rem; text-align: center; color: var(--text-muted); font-size: 0.88rem;">
+    <div class="container">
+      <p style="margin-bottom: 0.75rem;">&copy; 2026 Baaz Contracting LLC. All Rights Reserved. Built on Trust. Driven by Precision.</p>
+      <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.8rem;">
+        <a href="privacy-policy.html" style="color: var(--cyan); text-decoration: none;">Privacy Policy</a>
+        <a href="terms.html" style="color: var(--cyan); text-decoration: none;">Terms of Service</a>
+        <a href="option-1-vercel-tailwind-astro/index.html" style="color: var(--text-muted); text-decoration: none;">Option 1: Vercel Architecture</a>
+        <a href="option-2-architectural-modernist/index.html" style="color: var(--text-muted); text-decoration: none;">Option 2: Nordic Modernist</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

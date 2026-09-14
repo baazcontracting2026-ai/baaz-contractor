@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - Page Not Found | [Company Name]</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #090d16;
+      color: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.5rem;
+    }
+    header, footer {
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .help-link {
+      font-size: 0.875rem;
+      color: #94a3b8;
+      text-decoration: none;
+    }
+    .help-link:hover {
+      color: #ffffff;
+    }
+    main {
+      text-align: center;
+      max-width: 600px;
+      margin: 3rem auto;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #818cf8;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+    p.desc {
+      font-size: 1.125rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.15s, background 0.15s;
+    }
+    .btn-primary {
+      background: #4f46e5;
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+    }
+    .btn-primary:hover {
+      background: #4338ca;
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: #1e293b;
+      color: #cbd5e1;
+      border: 1px solid #334155;
+    }
+    .btn-secondary:hover {
+      background: #334155;
+      color: #ffffff;
+    }
+    .quick-links {
+      border-top: 1px solid #1e293b;
+      padding-top: 1.5rem;
+    }
+    .quick-links p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748b;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .quick-links-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .quick-links-items a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    .quick-links-items a:hover {
+      color: #818cf8;
+    }
+    footer {
+      font-size: 0.75rem;
+      color: #475569;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="/" class="brand">[Company Name]</a>
+    <a href="/contact" class="help-link">Need Help? &rarr;</a>
+  </header>
+
+  <main>
+    <div class="badge">Error 404 • Page Not Found</div>
+    <h1>Oops! We couldn't find that page.</h1>
+    <p class="desc">
+      The link you followed may be outdated, mistyped, or removed. Let's get you back on track!
+    </p>
+
+    <div class="btn-group">
+      <a href="/" class="btn btn-primary">Return to Homepage</a>
+      <button onclick="history.back()" class="btn btn-secondary">Go Back</button>
+    </div>
+
+    <div class="quick-links">
+      <p>Popular Destinations</p>
+      <div class="quick-links-items">
+        <a href="/#services">Services / Classes</a>
+        <a href="/#faq">FAQs</a>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact Support</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; [YEAR] [Company Name]. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

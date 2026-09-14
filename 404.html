@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | Baaz Contracting</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" href="shared-assets/favicon.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09090B;
+      --card-bg: #141418;
+      --card-border: #27272A;
+      --cyan: #00DFD8;
+      --blue: #0070F3;
+      --text-main: #F4F4F5;
+      --text-muted: #A1A1AA;
+      --font-main: 'Inter', system-ui, sans-serif;
+      --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.5rem;
+    }
+
+    .header-bar {
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+    }
+
+    .brand-logo-img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    main {
+      text-align: center;
+      max-width: 640px;
+      margin: 3rem auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 3.5rem 2.5rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      background: rgba(0, 223, 216, 0.1);
+      border: 1px solid rgba(0, 223, 216, 0.25);
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+
+    .error-code {
+      font-family: var(--font-mono);
+      font-size: clamp(3.5rem, 8vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--cyan) 0%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 1rem;
+    }
+
+    p.desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.65rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.15s, opacity 0.15s;
+    }
+
+    .btn-primary {
+      background: #FFFFFF;
+      color: #09090B;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #141418;
+      color: var(--text-main);
+      border: 1px solid var(--card-border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--cyan);
+    }
+
+    .quick-links {
+      border-top: 1px solid var(--card-border);
+      padding-top: 1.5rem;
+    }
+
+    .quick-links p {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .quick-links-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .quick-links-items a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+    }
+
+    .quick-links-items a:hover {
+      color: var(--cyan);
+    }
+
+    footer {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header-bar">
+    <a href="index.html" class="brand-group">
+      <img src="shared-assets/logo-light.svg" alt="Baaz Contracting" class="brand-logo-img">
+      <span>Baaz Contracting</span>
+    </a>
+    <a href="index.html" style="color: var(--cyan); text-decoration: none; font-size: 0.85rem;">&larr; Back to Showcase</a>
+  </header>
+
+  <main>
+    <div class="badge">Error 404 &bull; Page Not Found</div>
+    <div class="error-code">404</div>
+    <h1>Blueprint Not Located</h1>
+    <p class="desc">
+      The page you're searching for does not exist or has been relocated. Return to the main portal or navigate directly into either architecture edition.
+    </p>
+
+    <div class="btn-group">
+      <a href="index.html" class="btn btn-primary">Return to Showcase</a>
+      <a href="option-1-vercel-tailwind-astro/index.html" class="btn btn-secondary">Option 1: Vercel Edition</a>
+      <a href="option-2-architectural-modernist/index.html" class="btn btn-secondary">Option 2: Nordic Edition</a>
+    </div>
+
+    <div class="quick-links">
+      <p>Quick Navigation</p>
+      <div class="quick-links-items">
+        <a href="option-1-vercel-tailwind-astro/index.html#services">Services</a>
+        <a href="option-1-vercel-tailwind-astro/index.html#estimator">Cost Calculator</a>
+        <a href="option-1-vercel-tailwind-astro/index.html#faq">FAQ</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Baaz Contracting LLC. All Rights Reserved. Built on Trust. Driven by Precision.</p>
+  </footer>
+
+</body>
+</html>
