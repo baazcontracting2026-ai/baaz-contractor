@@ -1,11 +1,11 @@
 <#
 .SYNOPSIS
-    Installs the 'website-launch-readiness' skill into any target website project.
+    Installs the unified Website Launch Readiness & Deployment skill into any target website project.
 
 .DESCRIPTION
-    Copies the website-launch-readiness skill package into the target project's
-    '.agents/skills/' directory so Antigravity and AI agents can automatically
-    recognize and use it for On-Page SEO, FAQs, Legal Pages, Git, and Error Pages.
+    Copies the complete website-launch-readiness skill package (covering all 8 pillars:
+    SEO, FAQs, Legal Pages, Git, 404/500 Pages, Google Analytics, GitHub, and Cloudflare)
+    into the target project's '.agents/skills/' directory.
 
 .PARAMETER TargetProjectPath
     Path to the target website project (relative or absolute).
@@ -24,12 +24,11 @@ param (
 
 $ErrorActionPreference = "Stop"
 
-# Locate source skill folder
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $SourceSkillDir = Resolve-Path (Join-Path $ScriptDir "..")
 
 Write-Host "`n========================================================" -ForegroundColor Cyan
-Write-Host " Website Launch Readiness Skill Installer" -ForegroundColor Green
+Write-Host " Complete Website Launch & Deployment Skill Installer" -ForegroundColor Green
 Write-Host "========================================================`n" -ForegroundColor Cyan
 Write-Host "Source Skill Path: $SourceSkillDir`n" -ForegroundColor Gray
 
@@ -74,7 +73,7 @@ if (-not (Test-Path $TargetProjectPath)) {
 $ResolvedTarget = Resolve-Path $TargetProjectPath
 $DestinationSkillDir = Join-Path $ResolvedTarget ".agents\skills\website-launch-readiness"
 
-Write-Host "`nInstalling skill to: $DestinationSkillDir" -ForegroundColor Cyan
+Write-Host "`nInstalling all 8 launch & deploy pillars to: $DestinationSkillDir" -ForegroundColor Cyan
 
 # Create destination directory if needed
 if (-not (Test-Path $DestinationSkillDir)) {
@@ -86,13 +85,18 @@ Copy-Item -Path "$SourceSkillDir\*" -Destination $DestinationSkillDir -Recurse -
 
 # Verify installation
 if (Test-Path (Join-Path $DestinationSkillDir "SKILL.md")) {
-    Write-Host "`n[SUCCESS] 'website-launch-readiness' skill installed successfully!" -ForegroundColor Green
-    Write-Host "`nTarget Project: $ResolvedTarget" -ForegroundColor White
+    Write-Host "`n[SUCCESS] Unified Website Launch Readiness skill installed successfully!" -ForegroundColor Green
+    Write-Host "Target Project: $ResolvedTarget" -ForegroundColor White
     Write-Host "Skill Location: $DestinationSkillDir" -ForegroundColor White
-    Write-Host "`nHow to use in that project:" -ForegroundColor Yellow
-    Write-Host " 1. Open the project in Antigravity or VS Code." -ForegroundColor Gray
-    Write-Host " 2. Ask the agent: 'Run website launch readiness checklist' or 'Audit on-page SEO and add FAQ section'." -ForegroundColor Gray
-    Write-Host " 3. The agent will automatically detect and load the skill!`n" -ForegroundColor Gray
+    Write-Host "`nAll 8 pillars are now active in that project:" -ForegroundColor Yellow
+    Write-Host " 1. On-Page SEO with AI" -ForegroundColor Gray
+    Write-Host " 2. FAQ Section & Schema" -ForegroundColor Gray
+    Write-Host " 3. Privacy Policy, Terms & Required Pages" -ForegroundColor Gray
+    Write-Host " 4. Git Commits & Version Control" -ForegroundColor Gray
+    Write-Host " 5. Custom 404 & 500 Error Pages" -ForegroundColor Gray
+    Write-Host " 6. Google Analytics 4 & Search Console Mapping (Gmail ID)" -ForegroundColor Gray
+    Write-Host " 7. Move Entire Code to GitHub.com (Gmail ID)" -ForegroundColor Gray
+    Write-Host " 8. Deploy to Cloudflare Pages (Gmail ID)`n" -ForegroundColor Gray
 } else {
     Write-Error "Installation failed: SKILL.md was not copied properly."
 }
