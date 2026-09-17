@@ -249,19 +249,60 @@ function initConsultationModal() {
   });
 
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Transmitting to Edge...';
+      const errBox = document.getElementById('modalFormError');
+      if (errBox) errBox.style.display = 'none';
 
-      setTimeout(() => {
-        formContainer.style.display = 'none';
-        successState.style.display = 'block';
+      const originalHtml = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span>Transmitting to Edge...</span>`;
+
+      const name = document.getElementById('modalName')?.value || '';
+      const phone = document.getElementById('modalPhone')?.value || '';
+      const email = document.getElementById('modalEmail')?.value || '';
+      const service = document.getElementById('modalService')?.value || '';
+      const notes = document.getElementById('modalNotes')?.value || '';
+
+      const payload = {
+        name,
+        phone,
+        email,
+        service,
+        notes,
+        _subject: `New Consultation Request - ${name || 'Baaz Contracting Client'}`,
+        _replyto: email,
+        _template: 'table',
+        _captcha: 'false'
+      };
+
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/baazcontracting2026@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (response.ok || (result && (result.success === "true" || result.success === true || (result.message && result.message.includes('Activation'))))) {
+          formContainer.style.display = 'none';
+          successState.style.display = 'block';
+        } else {
+          // Fallback to standard form POST submission
+          HTMLFormElement.prototype.submit.call(form);
+        }
+      } catch (err) {
+        console.warn('AJAX submit issue, submitting via native POST fallback...', err);
+        HTMLFormElement.prototype.submit.call(form);
+      } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-      }, 700);
+        submitBtn.innerHTML = originalHtml;
+      }
     });
   }
 

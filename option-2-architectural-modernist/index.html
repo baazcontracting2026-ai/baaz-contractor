@@ -653,26 +653,32 @@
             <h3 style="margin-bottom: 0.5rem; font-size: 1.45rem;">Schedule a Free Consultation</h3>
             <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--ink-muted);">Zero obligation. We provide complete estimates and site assessments.</p>
 
-            <form id="nordicConsultForm">
+            <form id="nordicConsultForm" action="https://formsubmit.co/baazcontracting2026@gmail.com" method="POST">
+              <!-- FormSubmit Configuration -->
+              <input type="hidden" name="_subject" value="New Consultation Request | Baaz Contracting">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="text" name="_honey" style="display:none">
+
               <div class="form-field">
                 <label for="opt2Name">Full Name</label>
-                <input type="text" id="opt2Name" placeholder="Your name" required>
+                <input type="text" id="opt2Name" name="name" placeholder="Your name" required>
               </div>
 
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                 <div class="form-field">
                   <label for="opt2Phone">Phone</label>
-                  <input type="tel" id="opt2Phone" placeholder="(555) 000-0000" required>
+                  <input type="tel" id="opt2Phone" name="phone" placeholder="(555) 000-0000" required>
                 </div>
                 <div class="form-field">
                   <label for="opt2Email">Email</label>
-                  <input type="email" id="opt2Email" placeholder="your@email.com" required>
+                  <input type="email" id="opt2Email" name="email" placeholder="your@email.com" required>
                 </div>
               </div>
 
               <div class="form-field">
                 <label for="opt2Service">Desired Construction Trade</label>
-                <select id="opt2Service">
+                <select id="opt2Service" name="service">
                   <option value="New Home Construction">New Home Construction</option>
                   <option value="Additions & Extensions">Additions & Extensions</option>
                   <option value="Kitchen Remodeling">Kitchen Remodeling</option>
@@ -685,8 +691,10 @@
 
               <div class="form-field">
                 <label for="opt2Notes">Project Scope Details</label>
-                <textarea id="opt2Notes" rows="3" placeholder="Tell us about your home, timeline, and architectural ideas..."></textarea>
+                <textarea id="opt2Notes" name="notes" rows="3" placeholder="Tell us about your home, timeline, and architectural ideas..."></textarea>
               </div>
+
+              <div id="opt2FormError" style="display: none; color: #ef4444; font-size: 0.85rem; margin-bottom: 0.75rem; text-align: center;"></div>
 
               <button type="submit" class="btn btn-emerald" style="width: 100%; font-size: 1rem;">
                 <span>Confirm Consultation Request</span>

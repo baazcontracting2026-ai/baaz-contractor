@@ -1112,26 +1112,32 @@
           Tell us about your upcoming project and our project director will reach out within 24 hours.
         </p>
 
-        <form class="modal-form" id="consultationForm">
+        <form class="modal-form" id="consultationForm" action="https://formsubmit.co/baazcontracting2026@gmail.com" method="POST">
+          <!-- FormSubmit Configuration -->
+          <input type="hidden" name="_subject" value="New Consultation Request | Baaz Contracting">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none">
+
           <div class="form-group">
             <label for="modalName">Full Name</label>
-            <input type="text" id="modalName" class="form-input" placeholder="e.g. John Doe" required>
+            <input type="text" id="modalName" name="name" class="form-input" placeholder="e.g. John Doe" required>
           </div>
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
             <div class="form-group">
               <label for="modalPhone">Phone Number</label>
-              <input type="tel" id="modalPhone" class="form-input" placeholder="(555) 000-0000" required>
+              <input type="tel" id="modalPhone" name="phone" class="form-input" placeholder="(555) 000-0000" required>
             </div>
             <div class="form-group">
               <label for="modalEmail">Email Address</label>
-              <input type="email" id="modalEmail" class="form-input" placeholder="name@example.com" required>
+              <input type="email" id="modalEmail" name="email" class="form-input" placeholder="name@example.com" required>
             </div>
           </div>
 
           <div class="form-group">
             <label for="modalService">Primary Service Required</label>
-            <select id="modalService" class="form-input">
+            <select id="modalService" name="service" class="form-input">
               <option value="New Home Construction">New Home Construction</option>
               <option value="Additions & Extensions">Additions & Extensions</option>
               <option value="Kitchen Remodeling">Kitchen Remodeling</option>
@@ -1144,8 +1150,10 @@
 
           <div class="form-group">
             <label for="modalNotes">Project Scope or Location Notes</label>
-            <textarea id="modalNotes" class="form-input" placeholder="Please describe your timeline, property address, and any specific architectural ideas..."></textarea>
+            <textarea id="modalNotes" name="notes" class="form-input" placeholder="Please describe your timeline, property address, and any specific architectural ideas..."></textarea>
           </div>
+
+          <div id="modalFormError" style="display: none; color: #ef4444; font-size: 0.85rem; margin-bottom: 0.75rem; text-align: center;"></div>
 
           <button type="submit" class="btn btn-accent" style="width: 100%; padding: 0.9rem; font-size: 1rem; margin-top: 0.5rem;">
             <span>Submit Consultation Request</span>
